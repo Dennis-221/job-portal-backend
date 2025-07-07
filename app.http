@@ -1,0 +1,140 @@
+### ✅ Register Jobseeker
+POST http://localhost:3000/api/auth/jobseeker/register
+Content-Type: application/json
+
+{
+  "name": "Aarav Mehta",
+  "email": "aarav.mehta@example.com",
+  "password": "SecurePass456!",
+  "mobile": "+918888777666",
+  "workStatus": "open to offers",
+  "experience": {
+    "years": 4,
+    "months": 3
+  }
+}
+
+###
+
+### ✅ Login as Jobseeker
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "aarav.mehta@example.com",
+  "password": "SecurePass456!",
+  "userType": "jobseeker"
+}
+
+###
+
+### ✅ Search Jobs (Public)
+GET http://localhost:3000/api/jobs/search?keywords=node&location=bangalore
+
+###
+
+### ✅ Get Job Details (Public)
+GET http://localhost:3000/api/jobs/1
+
+###
+
+### ✅ Register Employer
+POST http://localhost:3000/api/auth/employer/register
+Content-Type: application/json
+
+{
+  "companyName": "Tech Solutions Ltd",
+  "email": "employer@example.com",
+  "password": "EmployerPass123!",
+  "mobile": "+919999888777",
+  "recruiterName": "Rahul Sharma",
+  "designation": "HR Manager",
+  "companyWebsite": "https://techsolutions.example.com"
+}
+
+###
+
+### ✅ Login as Employer
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "employer@example.com",
+  "password": "EmployerPass123!",
+  "userType": "employer"
+}
+
+###
+
+# ### ✅ Post New Job (Employer) — ADD Bearer Token
+# POST http://localhost:3000/api/employer/jobs
+# Content-Type: application/json
+# Authorization: Bearer {{YOUR_EMPLOYER_JWT}}
+
+# {
+#   "title": "Senior Node.js Developer",
+#   "description": "Build scalable APIs with Node.js",
+#   "department": "Engineering",
+#   "location": "Bangalore",
+#   "experienceMin": 3,
+#   "experienceMax": 5,
+#   "salaryMin": 800000,
+#   "salaryMax": 1200000,
+#   "hideSalary": false,
+#   "jobType": "Full-time",
+#   "openings": 2
+# }
+
+# ###
+
+# ### ✅ Get Employer's Posted Jobs
+# GET http://localhost:3000/api/employer/jobs
+# Authorization: Bearer {{YOUR_EMPLOYER_JWT}}
+
+# ###
+
+# ### ✅ Get Applications for a Job
+# GET http://localhost:3000/api/employer/jobs/1/applications
+# Authorization: Bearer {{YOUR_EMPLOYER_JWT}}
+
+# ###
+
+# ### ✅ Apply to a Job (Jobseeker)
+# POST http://localhost:3000/api/applications/apply
+# Content-Type: application/json
+# Authorization: Bearer {{YOUR_JOBSEEKER_JWT}}
+
+# {
+#   "jobId": 1,
+#   "coverLetter": "I am very interested in this role.",
+#   "resumeId": 123
+# }
+
+###
+
+# ### ✅ View Own Applications
+# GET http://localhost:3000/api/applications
+# Authorization: Bearer {{YOUR_JOBSEEKER_JWT}}
+
+# ###
+
+# ### ✅ Update Application Status (Employer)
+# PUT http://localhost:3000/api/applications/1
+# Content-Type: application/json
+# Authorization: Bearer {{YOUR_EMPLOYER_JWT}}
+
+# {
+#   "status": "Accepted"
+# }
+
+# ###
+
+# ### ✅ Search Candidates (Employer)
+# GET http://localhost:3000/api/search/candidates?keywords=Aarav
+# Authorization: Bearer {{YOUR_EMPLOYER_JWT}}
+
+###
+
+### ✅ Send Message
+POST http://localhost:3000/api/messages
+Content-Type: application/j
