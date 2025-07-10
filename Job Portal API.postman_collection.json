@@ -1,0 +1,752 @@
+{
+	"info": {
+		"_postman_id": "2345c4c5-d1b9-4bcf-985b-37fa6e1baa7f",
+		"name": "Job Portal API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22089300"
+	},
+	"item": [
+		{
+			"name": "Register Jobseeker",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Aarav Mehta\",\n  \"email\": \"aarav@example.com\",\n  \"password\": \"Pass123!\",\n  \"mobile\": \"+919876543210\",\n  \"workStatus\": \"open to offers\",\n  \"experience\": {\n    \"years\": 3,\n    \"months\": 6\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/jobseeker/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"jobseeker",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Employer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"companyName\": \"Tech Solutions Ltd\",\n  \"email\": \"employer@example.com\",\n  \"password\": \"EmployerPass123!\",\n  \"mobile\": \"+919999888777\",\n  \"recruiterName\": \"Rahul Sharma\",\n  \"designation\": \"HR Manager\",\n  \"companyWebsite\": \"https://techsolutions.example.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/employer/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"employer",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Jobseeker",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"aarav@example.com\",\n  \"password\": \"Pass123!\",\n  \"userType\": \"jobseeker\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Employer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"employer@example.com\",\n  \"password\": \"EmployerPass123!\",\n  \"userType\": \"employer\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Jobseeker Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Jobseeker Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Aarav M.\",\n  \"mobile\": \"+919876543211\",\n  \"workStatus\": \"actively looking\",\n  \"experience\": {\n    \"years\": 4,\n    \"months\": 0\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Senior Node.js Developer\",\n  \"description\": \"Build scalable APIs\",\n  \"department\": \"Engineering\",\n  \"location\": \"Bangalore\",\n  \"experienceMin\": 3,\n  \"experienceMax\": 6,\n  \"salaryMin\": 800000,\n  \"salaryMax\": 1200000,\n  \"hideSalary\": false,\n  \"jobType\": \"Full-time\",\n  \"openings\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/employer/jobs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employer",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Posted Jobs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/employer/jobs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employer",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job Applications",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/employer/jobs/1/applications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employer",
+						"jobs",
+						"1",
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Jobs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/jobs/search?keywords=node&location=bangalore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"jobs",
+						"search"
+					],
+					"query": [
+						{
+							"key": "keywords",
+							"value": "node"
+						},
+						{
+							"key": "location",
+							"value": "bangalore"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/jobs/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"jobs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Apply to Job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"jobId\": 1,\n  \"coverLetter\": \"I am excited to apply.\",\n  \"resumeId\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/applications/apply",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"applications",
+						"apply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Own Applications",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/applications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Application Status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"Accepted\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/applications/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"applications",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"recipientId\": 101,\n  \"recipientType\": \"jobseeker\",\n  \"subject\": \"Interview Invitation\",\n  \"message\": \"We would like to schedule an interview...\",\n  \"jobId\": 1001\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/messages/send",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"messages",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Messages",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/messages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Jobseeker Resumes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/resumes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"resumes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Jobseeker Analytics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/analytics/profile-views",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"analytics",
+						"profile-views"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employer Analytics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/analytics/job-views",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"analytics",
+						"job-views"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Jobseeker Resumes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsInVzZXJUeXBlIjoiam9ic2Vla2VyIiwiaWF0IjoxNzUxODY3MzQ3LCJleHAiOjE3NTE4NzQ1NDd9.0BA99jWxuStBuODF8iLxsDbKFg6BREt4x6BgYH_r68c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "resume",
+							"type": "file",
+							"src": "postman-cloud:///1f05aec3-d898-4610-bac3-dd5ebd18475a"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/resumes/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"resumes",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company Reviews",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsInVzZXJUeXBlIjoiam9ic2Vla2VyIiwiaWF0IjoxNzUxODY3MzQ3LCJleHAiOjE3NTE4NzQ1NDd9.0BA99jWxuStBuODF8iLxsDbKFg6BREt4x6BgYH_r68c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"overallRating\": 4,\r\n  \"ratings\": {\r\n    \"workLifeBalance\": 4,\r\n    \"compensation\": 3,\r\n    \"culture\": 5,\r\n    \"careerGrowth\": 4\r\n  },\r\n  \"title\": \"Great place to work\",\r\n  \"pros\": \"Excellent work culture, learning opportunities\",\r\n  \"cons\": \"Could improve on compensation\",\r\n  \"employmentStatus\": \"current\",\r\n  \"jobTitle\": \"Software Engineer\",\r\n  \"yearsWorked\": 2,\r\n  \"recommendToFriend\": true\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/companies/8/reviews",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"companies",
+						"8",
+						"reviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Employer Analytics",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsInVzZXJUeXBlIjoiZW1wbG95ZXIiLCJpYXQiOjE3NTE4Njc0NTUsImV4cCI6MTc1MTg3NDY1NX0.pYnC933ZJB3Dz6OPJUHWYNjYTxj_T5axt6NdZpe4APQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/employer/analytics/job/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employer",
+						"analytics",
+						"job",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscription Plans",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
